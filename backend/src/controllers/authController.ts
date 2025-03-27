@@ -74,10 +74,12 @@ export const signin = async(req:Request, res:Response): Promise<void> => {
             }
 
             const token = jwt.sign(
-                {id:existingUser._id},
+                {userId:existingUser._id},
                 secretKey,
                 {expiresIn: '1hr'}
             )
+            console.log("JWY token:", token);
+            
 
             res.status(200).json({message: "SignedIn Successfully", token});
 

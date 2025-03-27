@@ -8,4 +8,4 @@ const tagsSchema  = new Schema({
     }
 })
 
-export const Tags = mongoose.model('tags', tagsSchema);
+export const Tags = mongoose.model('Tags', tagsSchema);

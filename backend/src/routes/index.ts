@@ -11,6 +11,6 @@ router.post('/signin', signin);
 router.post('/content', authenticateUser, postContents);
 
 router.get('/content', authenticateUser, getContents);
-router.delete('/content:id', authenticateUser, deleteContent);
+router.delete('/content', authenticateUser, deleteContent);
 
 export default router;

@@ -1,34 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react"
+import Button from "./components/Button"
+import Card from "./components/Card"
+import CreateContentModal from "./components/CreateContentModal"
+// import DeleteIcon from "./icons/DeleteIcon"
+// import DocIcon from "./icons/DocIcon"
+import { PlusIcon } from "./icons/PlusIcon"
+import ShareIcon from "./icons/ShareIcon"
+import Sidebar from "./components/Sidebar"
 
-function App() {
-  const [count, setCount] = useState(0)
+
+
+const App = () => {
+
+  const [openModal, setOpenModal] = useState(false);
 
   return (
-    <>
+    <div className="bg-[#F9FBFC] h-screen ">
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Sidebar />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <CreateContentModal open={openModal} onClose={()=> setOpenModal(false)}/>
+      <div className="flex justify-end gap-4 p-3">      
+        <Button onClick={()=> setOpenModal(true)} variant="primary" text="Add Content" startIcon={<PlusIcon />}></Button>
+        <Button variant="secondary" text="Share Brain" startIcon={<ShareIcon />}></Button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <div className="flex p-5 absolute left-72">
+        <div>
+          
+        </div>
+          <Card link="https://www.x.com/kirat_tw/status/1633685473821425666" title="Twitter" type="twitter"  />
+
+          <Card link="https://www.youtube.com/watch?si=WcHgTueZwTQ_TYTg&v=gtqZQG9O5PI&feature=youtu.be" title="My Youtube" type="youtube"  />
+
+      </div>
+    </div>
   )
 }
 
